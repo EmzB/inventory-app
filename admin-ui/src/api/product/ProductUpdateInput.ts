@@ -1,4 +1,5 @@
 import { SupplierWhereUniqueInput } from "../supplier/SupplierWhereUniqueInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type ProductUpdateInput = {
   description?: string;
@@ -6,4 +7,5 @@ export type ProductUpdateInput = {
   price?: number;
   quantity?: number;
   supplier?: SupplierWhereUniqueInput | null;
+  user?: UserWhereUniqueInput | null;
 };

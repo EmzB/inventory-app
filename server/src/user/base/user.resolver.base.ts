@@ -25,6 +25,8 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
+import { ProductFindManyArgs } from "../../product/base/ProductFindManyArgs";
+import { Product } from "../../product/base/Product";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -134,5 +136,25 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Product])
+  @nestAccessControl.UseRoles({
+    resource: "Product",
+    action: "read",
+    possession: "any",
+  })
+  async products(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: ProductFindManyArgs
+  ): Promise<Product[]> {
+    const results = await this.service.findProducts(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }
