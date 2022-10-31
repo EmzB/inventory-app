@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { FloatFilter } from "../../util/FloatFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { SupplierWhereUniqueInput } from "../../supplier/base/SupplierWhereUniqueInput";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class ProductWhereInput {
   @ApiProperty({
@@ -85,5 +86,17 @@ class ProductWhereInput {
     nullable: true,
   })
   supplier?: SupplierWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput;
 }
 export { ProductWhereInput };

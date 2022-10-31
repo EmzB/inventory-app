@@ -72,19 +72,19 @@
     "attributes": "*"
   },
   {
-    "role": "admin",
+    "role": "user",
     "resource": "Product",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "admin",
+    "role": "user",
     "resource": "Product",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "admin",
+    "role": "user",
     "resource": "Product",
     "action": "delete:any",
     "attributes": "*"
@@ -111,30 +111,6 @@
     "role": "admin",
     "resource": "Supplier",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Supplier",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Supplier",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Supplier",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Supplier",
-    "action": "read:any",
     "attributes": "*"
   }
 ]

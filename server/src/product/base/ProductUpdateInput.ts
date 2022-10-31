@@ -20,6 +20,7 @@ import {
 } from "class-validator";
 import { SupplierWhereUniqueInput } from "../../supplier/base/SupplierWhereUniqueInput";
 import { Type } from "class-transformer";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class ProductUpdateInput {
   @ApiProperty({
@@ -77,5 +78,17 @@ class ProductUpdateInput {
     nullable: true,
   })
   supplier?: SupplierWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput | null;
 }
 export { ProductUpdateInput };

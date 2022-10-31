@@ -54,6 +54,12 @@ export class ProductControllerBase {
               connect: data.supplier,
             }
           : undefined,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
       },
       select: {
         createdAt: true,
@@ -70,6 +76,12 @@ export class ProductControllerBase {
         },
 
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -103,6 +115,12 @@ export class ProductControllerBase {
         },
 
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -137,6 +155,12 @@ export class ProductControllerBase {
         },
 
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -172,6 +196,12 @@ export class ProductControllerBase {
                 connect: data.supplier,
               }
             : undefined,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
         },
         select: {
           createdAt: true,
@@ -188,6 +218,12 @@ export class ProductControllerBase {
           },
 
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -230,6 +266,12 @@ export class ProductControllerBase {
           },
 
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
