@@ -13,11 +13,9 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional } from "class-validator";
 import { FloatFilter } from "../../util/FloatFilter";
 import { IntFilter } from "../../util/IntFilter";
-import { SupplierWhereUniqueInput } from "../../supplier/base/SupplierWhereUniqueInput";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class ProductWhereInput {
   @ApiProperty({
@@ -74,29 +72,5 @@ class ProductWhereInput {
     nullable: true,
   })
   quantity?: IntFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => SupplierWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => SupplierWhereUniqueInput)
-  @IsOptional()
-  @Field(() => SupplierWhereUniqueInput, {
-    nullable: true,
-  })
-  supplier?: SupplierWhereUniqueInput;
-
-  @ApiProperty({
-    required: false,
-    type: () => UserWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
-    nullable: true,
-  })
-  user?: UserWhereUniqueInput;
 }
 export { ProductWhereInput };

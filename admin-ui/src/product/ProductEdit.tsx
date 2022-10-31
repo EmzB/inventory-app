@@ -11,7 +11,6 @@ import {
 } from "react-admin";
 
 import { SupplierTitle } from "../supplier/SupplierTitle";
-import { UserTitle } from "../user/UserTitle";
 
 export const ProductEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -27,9 +26,6 @@ export const ProductEdit = (props: EditProps): React.ReactElement => {
           label="suppliers"
         >
           <SelectInput optionText={SupplierTitle} />
-        </ReferenceInput>
-        <ReferenceInput source="user.id" reference="User" label="User">
-          <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>
     </Edit>

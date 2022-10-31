@@ -219,12 +219,6 @@ export class SupplierControllerBase {
         },
 
         updatedAt: true,
-
-        user: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (results === null) {

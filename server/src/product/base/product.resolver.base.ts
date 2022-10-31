@@ -26,7 +26,6 @@ import { ProductFindManyArgs } from "./ProductFindManyArgs";
 import { ProductFindUniqueArgs } from "./ProductFindUniqueArgs";
 import { Product } from "./Product";
 import { Supplier } from "../../supplier/base/Supplier";
-import { User } from "../../user/base/User";
 import { ProductService } from "../product.service";
 
 @graphql.Resolver(() => Product)
@@ -106,12 +105,6 @@ export class ProductResolverBase {
               connect: args.data.supplier,
             }
           : undefined,
-
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
       },
     });
   }
@@ -135,12 +128,6 @@ export class ProductResolverBase {
           supplier: args.data.supplier
             ? {
                 connect: args.data.supplier,
-              }
-            : undefined,
-
-          user: args.data.user
-            ? {
-                connect: args.data.user,
               }
             : undefined,
         },
@@ -185,22 +172,6 @@ export class ProductResolverBase {
   })
   async supplier(@graphql.Parent() parent: Product): Promise<Supplier | null> {
     const result = await this.service.getSupplier(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async user(@graphql.Parent() parent: Product): Promise<User | null> {
-    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;
