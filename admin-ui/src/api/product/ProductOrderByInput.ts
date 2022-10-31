@@ -9,5 +9,4 @@ export type ProductOrderByInput = {
   quantity?: SortOrder;
   supplierId?: SortOrder;
   updatedAt?: SortOrder;
-  userId?: SortOrder;
 };

@@ -21,7 +21,6 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Supplier } from "../../supplier/base/Supplier";
-import { User } from "../../user/base/User";
 @ObjectType()
 class Product {
   @ApiProperty({
@@ -88,14 +87,5 @@ class Product {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: false,
-    type: () => User,
-  })
-  @ValidateNested()
-  @Type(() => User)
-  @IsOptional()
-  user?: User | null;
 }
 export { Product };

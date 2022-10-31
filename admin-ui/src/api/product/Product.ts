@@ -1,5 +1,4 @@
 import { Supplier } from "../supplier/Supplier";
-import { User } from "../user/User";
 
 export type Product = {
   createdAt: Date;
@@ -10,5 +9,4 @@ export type Product = {
   quantity: number;
   supplier?: Supplier | null;
   updatedAt: Date;
-  user?: User | null;
 };
